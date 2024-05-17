@@ -71,6 +71,13 @@ jobs:
         name: snap
         path: ./*.snap
 
+    - name: Install snap
+      run: |
+        sudo snap install --devmode --dangerous *.snap
+
+    - name: Test snap
+      run: dotnet-fsharp-helloworld
+
   integration_tests:
     strategy:
       matrix:
@@ -83,30 +90,11 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run Tests
       run: dotnet test
-        
-  run_snap:
-    needs: build_snap
-    
-    runs-on: ubuntu-22.04
-    steps:
-    - uses: actions/download-artifact@v3
-      name: Download artifact
-      with:
-        name: snap
-        
-    - name: Install snap
-      run: |
-        zip -r snap.zip .
-        # dangerous because it's a local snap (not one from the SnapStore)
-        sudo snap install --devmode --dangerous *.snap
-    
-    - name: Test snap
-      run: dotnet-fsharp-helloworld
 
   conventions:
     needs:
     - integration_tests
-    - run_snap
+    - build_snap
 
     runs-on: ubuntu-22.04
     container:
@@ -138,7 +126,7 @@ jobs:
 
   publish_snap:
     needs:
-    - run_snap
+    - build_snap
     - integration_tests
     - conventions
 
