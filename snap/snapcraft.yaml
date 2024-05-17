@@ -12,8 +12,10 @@ parts:
   dotnet-fsharp-helloworld:
     plugin: dump
     source: ./staging
-    stage-packages:
+    build-packages:
       - dotnet-sdk-7.0
+    stage-packages:
+      - dotnet-runtime-7.0
 
 apps:
   dotnet-fsharp-helloworld:
