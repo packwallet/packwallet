@@ -10,7 +10,6 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   dotnet-fsharp-helloworld:
-    plugin: dotnet
     source: .
     stage-packages:
       - dotnet-sdk-7.0
