@@ -12,12 +12,8 @@ parts:
   dotnet-fsharp-helloworld:
     plugin: dotnet
     source: .
-    build-packages:
-      - dotnet-sdk-7.0
     stage-packages:
-      - libc6
-    stage-snaps:
-      - dotnet-runtime-70
+      - dotnet-sdk-7.0
 
 apps:
   dotnet-fsharp-helloworld:
