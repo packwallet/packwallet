@@ -18,5 +18,5 @@ parts:
 apps:
   dotnet-fsharp-helloworld:
     # TODO: add args "$0"
-    command: $SNAP/dotnet $SNAP/PackWallet.dll
+    command: bin/dotnet $SNAP/PackWallet.dll
 
