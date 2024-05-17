@@ -17,5 +17,5 @@ parts:
 
 apps:
   dotnet-fsharp-helloworld:
-    command: launch.sh
+    command: $SNAP/dotnet $SNAP/PackWallet.dll "$@"
 
