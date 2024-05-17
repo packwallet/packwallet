@@ -63,7 +63,7 @@ jobs:
       run: dotnet build --configuration Release
 
     - name: Generate snap package
-      run: sudo snapcraft --destructive-mode --verbosity=verbose || sudo bash -c 'cat /root/.local/state/snapcraft/log/*.log'
+      run: sudo snapcraft --destructive-mode --verbosity=verbose || (sudo bash -c 'cat /root/.local/state/snapcraft/log/*.log' && exit 1)
 
     - uses: actions/upload-artifact@v3
       name: Upload snap package as artifact
